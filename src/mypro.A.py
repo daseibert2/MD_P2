@@ -13,7 +13,7 @@ print('Adding solvent...')
 modeller.addSolvent(forcefield, model='tip3p', padding=1*nanometer)
 print('Minimizing...')
 system = forcefield.createSystem(modeller.topology, nonbondedMethod=PME)
-integrator = VerletIntegrator(0.001*picoseconds)
+integrator = LangevinIntegrator(300*kelvin, 1/picosecond, 0.001*picoseconds)
 platform = Platform.getPlatformByName('OpenCL')
 
 
